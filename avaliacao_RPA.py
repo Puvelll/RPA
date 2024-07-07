@@ -87,9 +87,7 @@ while True:
             padrao2 = r'python-3\.11\.9-amd64 \(\d+\)\.exe'
             corresponde1 = re.findall(padrao1, arquivo)
             corresponde2 = re.findall(padrao2, arquivo)
-            print(arquivo)
             if corresponde1 or corresponde2:
-                print(corresponde1, corresponde2)
                 driver.quit()
                 break  # Sair do loop quando o arquivo é encontrado
     else:
