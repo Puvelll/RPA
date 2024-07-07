@@ -3,7 +3,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import re
 import os
-import time
 
 # Leitura da pasta dowload
 usuario = os.getlogin()
@@ -76,7 +75,6 @@ for i in driver.find_elements(By.XPATH, '//*[@id="content"]/div/section/article/
 # Utiliza a primeira verificação de dowloads para mapear entradas de novos arquivos,
 # em caso de novos arquivos haverá uma verificação de padrão, se corresponder ao padrão, o loop é finalizado. 
 while True:
-    time.sleep(1)
     list_python_nova = list_python
     usuario = os.getlogin()
     diretorio = f"C:/Users/{usuario}/Downloads"
