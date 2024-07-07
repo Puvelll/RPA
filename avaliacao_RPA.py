@@ -16,6 +16,8 @@ list_outros = []
 for i in arquivos:
     padrao1 = r'python-3\.11\.9-amd64\.exe' #Padrão 1, busca encontrar o arquivo sem numeração
     padrao2 = r'python-3\.11\.9-amd64 \(\d+\)\.exe' #Padrão 1, busca encontrar o arquivo com numeração
+
+    # Salva o nome dos arquivos que corresponde aos padroes
     corresponde1 = re.findall(padrao1, i)
     corresponde2 = re.findall(padrao2, i)
     if corresponde1 or corresponde2:
@@ -79,11 +81,14 @@ while True:
     usuario = os.getlogin()
     diretorio = f"C:/Users/{usuario}/Downloads"
     arquivos = os.listdir(diretorio)
+    
     for arquivo in arquivos:
         if arquivo not in list_python and arquivo not in list_outros:
-            padrao1 = r'python-3\.11\.9-amd64\.exe'
-            padrao2 = r'python-3\.11\.9-amd64 \(\d+\)\.exe'
-            corresponde1 = re.findall(padrao1, arquivo)
+            padrao1 = r'python-3\.11\.9-amd64\.exe' #Padrão 1, busca encontrar o arquivo sem numeração
+            padrao2 = r'python-3\.11\.9-amd64 \(\d+\)\.exe' #Padrão 2, busca encontrar o arquivo com numeração
+
+            # Salva o nome dos arquivos que corresponde aos padroes
+            corresponde1 = re.findall(padrao1, arquivo) 
             corresponde2 = re.findall(padrao2, arquivo)
             if corresponde1 or corresponde2:
                 driver.quit()
