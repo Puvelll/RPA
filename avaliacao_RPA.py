@@ -5,10 +5,8 @@ import re
 import os
 
 # Leitura da pasta dowload
-usuario = os.getlogin()
-diretorio = (f"C:/Users/{usuario}/Downloads")
+diretorio = os.path.join("C:/Users", os.getlogin(), "Downloads")
 arquivos = os.listdir(diretorio)
-alvo = 'python-3.11.9-amd64.exe'
 
 # Separa arquivos por padroes
 list_python = []
@@ -59,12 +57,12 @@ for i in driver.find_elements(By.PARTIAL_LINK_TEXT, 'https://www.python.org'):
         i.click()
         break
 
-# Seleciona XPATH para acessar dowload no site
+# Seleciona XPATH para acessar aba de dowload no site
 driver.find_element(By.XPATH, '//*[@id="downloads"]').click()
 
 # Percorre a lista até encontrar a versão correta.
-for i in driver.find_elements(By.XPATH, '//*[@id="content"]/div/section/div[2]/ol/li'):
-    if i.text[0:13] == 'Python 3.11.9':
+for i in driver.find_elements(By.XPATH, '//*[@id="content"]/div/section/div[2]/ol/li/span[1]/a'):
+    if i.text == 'Python 3.11.9':
         i.click()
         break
 
@@ -77,9 +75,6 @@ for i in driver.find_elements(By.XPATH, '//*[@id="content"]/div/section/article/
 # Utiliza a primeira verificação de dowloads para mapear entradas de novos arquivos,
 # em caso de novos arquivos haverá uma verificação de padrão, se corresponder ao padrão, o loop é finalizado. 
 while True:
-    list_python_nova = list_python
-    usuario = os.getlogin()
-    diretorio = f"C:/Users/{usuario}/Downloads"
     arquivos = os.listdir(diretorio)
     
     for arquivo in arquivos:
