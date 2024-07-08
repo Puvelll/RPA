@@ -24,7 +24,7 @@ for i in arquivos:
     else:
         list_outros.append(i)
 
-# Configura o webdriver para não bloquear o dowload, evitando ação humana
+# Configura o webdriver para não bloquear o dowload, evitando necessidade de ação humana
 options = webdriver.ChromeOptions()
 prefs = {
     "download.default_directory": "/caminho/para/o/diretorio/de/downloads",
@@ -67,7 +67,7 @@ for i in driver.find_elements(By.XPATH, '//*[@id="content"]/div/section/div[2]/o
         break
 
 # Percorre a lista até encontrar a versão de windows 64. 
-for i in driver.find_elements(By.XPATH, '//*[@id="content"]/div/section/article/table/tbody/tr/td'):
+for i in driver.find_elements(By.XPATH, '//*[@id="content"]/div/section/article/table/tbody/tr/td[1]/a'):
     if i.text == 'Windows installer (64-bit)':
         i.click()
         break
