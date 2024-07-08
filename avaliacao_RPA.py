@@ -51,9 +51,7 @@ driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/form/div[1]/div[1]/div[2
 
 # Identifica a pagina com padrão 'https://www.python.org' e 'Download Python | Python.org', apos encontrar o padão o click é realizado.
 for i in driver.find_elements(By.PARTIAL_LINK_TEXT, 'https://www.python.org'):
-    print(i.text)
     if i.text == driver.find_element(By.PARTIAL_LINK_TEXT, 'Download Python | Python.org').text:
-        print(i.text)
         i.click()
         break
 
